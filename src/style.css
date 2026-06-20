@@ -1,0 +1,166 @@
+:root {
+  --ink: #eaf1ff;
+  --dim: rgba(234, 241, 255, 0.55);
+  --accent: #8fb6ff;
+  font-family: "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: #02030a; color: var(--ink); }
+
+body { overflow-x: hidden; }
+
+/* fixed full-screen canvas behind everything */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+/* the only element that actually scrolls — drives the journey */
+.spacer { height: 620vh; pointer-events: none; }
+
+/* cinematic vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 50%, transparent 52%, rgba(0, 0, 4, 0.7) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* brand */
+.brand {
+  position: fixed;
+  top: clamp(18px, 3vw, 38px);
+  left: clamp(18px, 3vw, 44px);
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  pointer-events: none;
+}
+.brand-en {
+  font-size: clamp(15px, 1.5vw, 19px);
+  letter-spacing: 0.42em;
+  font-weight: 600;
+}
+.brand-jp {
+  font-size: clamp(12px, 1.2vw, 14px);
+  letter-spacing: 0.3em;
+  color: var(--dim);
+}
+
+/* progress rail */
+.rail {
+  position: fixed;
+  top: 50%;
+  right: clamp(16px, 2.5vw, 34px);
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rail .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(234, 241, 255, 0.22);
+  transition: background 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+}
+.rail .dot.on {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  transform: scale(1.5);
+}
+
+/* chapter captions — all stacked at centre, faded by JS */
+.overlay { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+.chapter {
+  position: absolute;
+  left: clamp(22px, 7vw, 130px);
+  bottom: clamp(64px, 16vh, 150px);
+  max-width: 460px;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.ch-index {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.ch-jp {
+  font-size: clamp(46px, 9vw, 104px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 0.98;
+  text-shadow: 0 4px 60px rgba(0, 0, 0, 0.7);
+}
+.ch-en {
+  font-size: clamp(13px, 1.4vw, 16px);
+  letter-spacing: 0.52em;
+  color: var(--dim);
+  margin-top: 14px;
+}
+.ch-desc {
+  margin-top: 20px;
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.9;
+  color: rgba(234, 241, 255, 0.78);
+  font-weight: 300;
+}
+
+/* scroll hint */
+.scrollhint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--dim);
+  pointer-events: none;
+}
+.scrollhint .arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  animation: drop 1.8s ease-in-out infinite;
+}
+@keyframes drop {
+  0% { transform: translateY(-10px) scaleY(0.7); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(12px) scaleY(1); opacity: 0; }
+}
+
+/* credit */
+.credit {
+  position: fixed;
+  bottom: clamp(14px, 2.5vw, 28px);
+  right: clamp(16px, 3vw, 40px);
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(234, 241, 255, 0.4);
+}
+.credit a { color: rgba(234, 241, 255, 0.6); text-decoration: none; }
+.credit a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .brand-jp { display: none; }
+  .rail { gap: 12px; }
+  .ch-desc { max-width: 84vw; }
+}

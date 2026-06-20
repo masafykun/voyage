@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VOYAGE（航宙）— スクロールで宇宙を旅するシネマティック3D体験。大気圏を離れ、星雲を抜け、光を超えて、銀河の果てへ。Three.js + GLSL + Lenis。" />
+  <meta name="theme-color" content="#02030a" />
+  <meta property="og:title" content="VOYAGE — 航宙" />
+  <meta property="og:description" content="スクロールで宇宙を旅するシネマティック3D体験。" />
+  <meta property="og:type" content="website" />
+  <title>VOYAGE — 航宙</title>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header class="brand">
+    <span class="brand-en">VOYAGE</span>
+    <span class="brand-jp">航宙</span>
+  </header>
+
+  <nav class="rail" aria-hidden="true">
+    <span class="dot on"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </nav>
+
+  <main class="overlay">
+    <section class="chapter" data-center="0.06">
+      <span class="ch-index">01</span>
+      <h2 class="ch-jp">大気圏</h2>
+      <p class="ch-en">ATMOSPHERE</p>
+      <p class="ch-desc">すべては、ひとつの青い点から始まる。</p>
+    </section>
+
+    <section class="chapter" data-center="0.26">
+      <span class="ch-index">02</span>
+      <h2 class="ch-jp">軌道</h2>
+      <p class="ch-en">ORBIT</p>
+      <p class="ch-desc">重力をふりほどき、故郷が遠ざかる。</p>
+    </section>
+
+    <section class="chapter" data-center="0.50">
+      <span class="ch-index">03</span>
+      <h2 class="ch-jp">星雲</h2>
+      <p class="ch-en">NEBULA</p>
+      <p class="ch-desc">色彩の雲を、息を止めて通り抜ける。</p>
+    </section>
+
+    <section class="chapter" data-center="0.74">
+      <span class="ch-index">04</span>
+      <h2 class="ch-jp">跳躍</h2>
+      <p class="ch-en">WARP</p>
+      <p class="ch-desc">光さえも、線になって流れていく。</p>
+    </section>
+
+    <section class="chapter" data-center="0.95">
+      <span class="ch-index">05</span>
+      <h2 class="ch-jp">銀河</h2>
+      <p class="ch-en">GALAXY</p>
+      <p class="ch-desc">旅の果て。無数の星々が、静かに渦を巻く。</p>
+    </section>
+  </main>
+
+  <div class="scrollhint" aria-hidden="true">
+    <span>SCROLL</span>
+    <span class="arrow"></span>
+  </div>
+
+  <footer class="credit">Three.js · GLSL · Lenis — <a href="https://github.com/masafykun" target="_blank" rel="noopener">masafy</a></footer>
+
+  <!-- generates the scroll length the journey reads from -->
+  <div class="spacer"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
