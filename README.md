@@ -10,7 +10,7 @@ VOYAGE はスクロール連動のシネマティック 3D 宇宙体験です。
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)
 
-🔗 **[Live Demo](https://voyage.1qaz.jp)**
+🔗 **[Live Demo](https://masafykun.github.io/voyage/)**
 
 ---
 
